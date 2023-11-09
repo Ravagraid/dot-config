@@ -1,17 +1,16 @@
 return {
 	{
-    "sainnhe/everforest",
-    lazy = false,
-    priority = 1000,
+		"sainnhe/everforest",
+		lazy = false,
+		priority = 1000,
 
-    config = function()
-      vim.cmd("colorscheme everforest")
-    end,
-  },
+		config = function()
+			vim.cmd("colorscheme everforest")
+		end,
+	},
 }
 
 --vim.g.everforest_diagnostic_line_highlight = 1
-
 
 --vim.fn.sign_define({
 --	{
