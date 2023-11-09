@@ -16,11 +16,21 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
-	defaults = {
-		lazy = true,
-	},
 	ui = {
 		border = "rounded",
+		icons = {
+			diagnostics = {
+				Error = " ",
+				Warn = " ",
+				Hint = " ",
+				Info = " ",
+			},
+			git = {
+				added = " ",
+				modified = " ",
+				removed = " ",
+			},
+		},
 	},
 	install = {
 		colorscheme = { "everforest" },
