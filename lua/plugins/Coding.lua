@@ -32,7 +32,6 @@ return {
 		},
 		opts = function()
 			local cmp = require("cmp")
-			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
 			return {
 				snippet = {
@@ -57,7 +56,7 @@ return {
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
-						mode = "text_symbol",
+						mode = "symbol_text",
 						maxwidth = 50,
 						ellipsis_char = "...",
 						before = function(entry, vim_item)
