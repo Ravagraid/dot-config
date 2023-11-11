@@ -7,7 +7,18 @@ return {
 	opts = {
 		highlight = { enable = true, additional_vim_regex_highlighting = true },
 		indent = { enable = true },
-		ensure_installed = { "c", "lua", "luadoc", "vim", "vimdoc", "query" },
+		ensure_installed = {
+			"c",
+			"lua",
+			"luadoc",
+			"vim",
+			"vimdoc",
+			"query",
+			"regex",
+			"bash",
+			"markdown",
+			"markdown_inline",
+		},
 		incremental_selection = {
 			enable = true,
 		},

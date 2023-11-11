@@ -7,6 +7,10 @@ return {
 			disable_filetype = { "TelescopePrompt", "vim" },
 		},
 	},
+
+	--Toggler
+	{ "rmagatti/alternate-toggler" },
+
 	--snippets
 	{
 		"L3MON4D3/LuaSnip",

@@ -5,7 +5,7 @@ return {
 		lazy = false,
 		branch = "v3.x",
 		dependencies = {
-			"nvim-lua/plenary.nvim",
+			{ "nvim-lua/plenary.nvim", lazy = true },
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
@@ -50,7 +50,13 @@ return {
 			defaults = {
 				mode = { "n", "v" },
 				["<leader>"] = {
+					a = { "ggVG", "Select All" },
+					e = { "<cmd>Neotree toggle<cr>", "Filetree" },
 					g = { "<cmd>lua _lazygit_toggle()<cr>", "Git" },
+					i = { "<cmd>ToggleAlternate<cr>", "Alternate" },
+					q = { "<cmd>q<cr>", "Quit" },
+					w = { "<cmd>w<cr>", "Save" },
+					x = { "<cmd>x<cr>", "Save and Quit" },
 				},
 				["g"] = { name = "+goto" },
 				["gs"] = { name = "+surround" },
@@ -59,9 +65,11 @@ return {
 				["<leader><tab>"] = { name = "+tabs" },
 				["<leader>b"] = { name = "+buffer" },
 				["<leader>c"] = { name = "+code" },
-				["<leader>f"] = { name = "+file/find" },
+				["<leader>f"] = {
+					name = "+file/find",
+					f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
+				},
 				["<leader>gh"] = { name = "+hunks" },
-				["<leader>q"] = { name = "+quit/session" },
 				["<leader>s"] = { name = "+search" },
 				["<leader>u"] = { name = "+ui" },
 				["<leader>w"] = { name = "+windows" },
@@ -73,5 +81,11 @@ return {
 			wk.setup(opts)
 			wk.register(opts.defaults)
 		end,
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 	},
 }
