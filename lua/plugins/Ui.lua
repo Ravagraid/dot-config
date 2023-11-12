@@ -53,6 +53,7 @@ return {
 			return {
 				direction = "float",
 				open_mapping = [[<c-\>]],
+				float_opts = { border = "curved" },
 				vim.api.nvim_set_keymap(
 					"n",
 					"<leader>g",
