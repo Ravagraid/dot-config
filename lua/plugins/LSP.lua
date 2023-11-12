@@ -65,6 +65,10 @@ return {
 				diagnostic = {
 					border_follow = false,
 				},
+				symbol_in_winbar = {
+					folder_level = 2,
+					delay = 300,
+				},
 			})
 		end,
 		dependencies = {
