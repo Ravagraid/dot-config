@@ -57,12 +57,15 @@ return {
 			})
 		end,
 	},
-
 	{
 		"nvimdev/lspsaga.nvim",
 		lazy = false,
 		config = function()
-			require("lspsaga").setup({})
+			require("lspsaga").setup({
+				diagnostic = {
+					border_follow = false,
+				},
+			})
 		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
