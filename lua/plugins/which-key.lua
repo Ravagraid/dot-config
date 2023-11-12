@@ -18,7 +18,7 @@ return {
 
 				["g"] = {
 					name = "+goto",
-					g = { "<cmd>Lspsaga goto_definition<cr>", "Goto Defintion" },
+					d = { "<cmd>Lspsaga goto_definition<cr>", "Goto Defintion" },
 				},
 
 				["gs"] = { name = "+surround" },

@@ -21,6 +21,7 @@ return {
 			enable_autosnippets = true,
 		},
 	},
+	{ "gbprod/yanky.nvim", opts = {} },
 
 	--cmp
 	{
@@ -101,5 +102,13 @@ return {
 			end
 			require("cmp").setup(opts)
 		end,
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = {},
 	},
 }
