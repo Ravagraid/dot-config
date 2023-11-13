@@ -47,6 +47,7 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		opts = function()
+			---@diagnostic disable-next-line: lowercase-global
 			function _lazygit_toggle()
 				require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", hidden = true }):toggle()
 			end

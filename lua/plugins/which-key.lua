@@ -1,8 +1,8 @@
 return {
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
 		opts = {
+			event = "VeryLazy",
 			plugins = { spelling = true },
 			defaults = {
 				mode = { "n", "v" },
@@ -13,7 +13,6 @@ return {
 					i = { "<cmd>ToggleAlternate<cr>", "Alternate" },
 					q = { "<cmd>q<cr>", "Quit" },
 					w = { "<cmd>w<cr>", "Save" },
-					x = { "<cmd>x<cr>", "Save and Quit" },
 				},
 
 				["g"] = {
@@ -26,11 +25,37 @@ return {
 				["]"] = {
 					name = "+next",
 					d = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Diagnostic" },
+					p = {
+						function()
+							if require("trouble").is_open() then
+								require("trouble").next({ skip_groups = true, jump = true })
+							else
+								local ok, err = pcall(vim.cmd.cnext)
+								if not ok then
+									vim.notify(err, vim.log.levels.ERROR)
+								end
+							end
+						end,
+						desc = "Next trouble/quickfix item",
+					},
 				},
 
 				["["] = {
 					name = "+prev",
 					d = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Diagnostic" },
+					p = {
+						function()
+							if require("trouble").is_open() then
+								require("trouble").previous({ skip_groups = true, jump = true })
+							else
+								local ok, err = pcall(vim.cmd.cprev)
+								if not ok then
+									vim.notify(err, vim.log.levels.ERROR)
+								end
+							end
+						end,
+						"Previous trouble/quickfix item",
+					},
 				},
 
 				["<leader><tab>"] = { name = "+tabs" },
@@ -50,6 +75,17 @@ return {
 					f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
 					g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Find text" },
 				},
+				function()
+					if require("trouble").is_open() then
+						require("trouble").next({ skip_groups = true, jump = true })
+					else
+						local ok, err = pcall(vim.cmd.cnext)
+						if not ok then
+							vim.notify(err, vim.log.levels.ERROR)
+						end
+					end
+				end,
+				desc = "Next trouble/quickfix item",
 
 				["<leader>gh"] = { name = "+hunks" },
 
@@ -59,7 +95,13 @@ return {
 
 				["<leader>w"] = { name = "+windows" },
 
-				["<leader>x"] = { name = "+diagnostics/quickfix" },
+				["<leader>x"] = {
+					name = "+diagnostics/quickfix",
+					x = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
+					X = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
+					L = { "<cmd>TroubleToggle loclist<cr>", "Location List (Trouble)" },
+					Q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix List (Trouble)" },
+				},
 			},
 		},
 		config = function(_, opts)
