@@ -112,7 +112,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		lazy = false,
+		event = "VeryLazy",
 		opts = {
 			signs = {
 				add = { text = "▎" },
@@ -124,5 +124,8 @@ return {
 			},
 			current_line_blame = true,
 		},
+		init = function()
+			require("gitsigns").setup()
+		end,
 	},
 }
