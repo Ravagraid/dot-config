@@ -1,12 +1,15 @@
 return {
 	{
 		"stevearc/conform.nvim",
+		lazy = false,
 		dependencies = { "mason.nvim" },
 		event = { "BufWritePre" },
-		cmd = "ConformInfo",
+		cmd = { "ConformInfo" },
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
+				json = { "clang_format" },
+				markdown = { "mdformat" },
 			},
 			format_on_save = { timeout_ms = 500, lsp_fallback = true },
 		},

@@ -36,7 +36,7 @@ return {
 								end
 							end
 						end,
-						desc = "Next trouble/quickfix item",
+						"Next trouble/quickfix item",
 					},
 				},
 
@@ -85,7 +85,7 @@ return {
 						end
 					end
 				end,
-				desc = "Next trouble/quickfix item",
+				"Next trouble/quickfix item",
 
 				["<leader>gh"] = { name = "+hunks" },
 

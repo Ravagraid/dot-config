@@ -14,6 +14,7 @@ return {
 			end
 		end,
 		opts = function()
+			local prose = require("nvim-prose")
 			vim.o.laststatus = vim.g.lualine_laststatus
 			return {
 				options = {
@@ -31,7 +32,11 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { { "filename", path = 1 } },
+					lualine_b = {
+						{ "filename", path = 1 },
+						{ prose.word_count, cond = prose.is_available },
+						{ prose.reading_time, cond = prose.is_available },
+					},
 					lualine_c = { "diagnostics", "diff", "filesize" },
 					lualine_x = { "encoding", "fileformat" },
 					lualine_y = { "location", "progress" },

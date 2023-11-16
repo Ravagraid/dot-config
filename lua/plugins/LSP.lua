@@ -25,7 +25,11 @@ return {
 			ensure_installed = {
 				"lua-language-server",
 				"stylua",
+				"mdformat",
+				"marksman",
 				"vim-language-server",
+				"jsonls",
+				"yamlls",
 			},
 			auto_update = true,
 		},
@@ -54,26 +58,31 @@ return {
 						},
 					}))
 				end,
+				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {})),
+				require("lspconfig").marksman.setup(vim.tbl_extend("force", lsp_config, {})),
+				require("lspconfig").yamlls.setup(vim.tbl_extend("force", lsp_config, {})),
+				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {})),
 			})
 		end,
 	},
 	{
 		"nvimdev/lspsaga.nvim",
 		lazy = false,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
 		config = function()
 			require("lspsaga").setup({
 				diagnostic = {
 					border_follow = false,
 				},
 				symbol_in_winbar = {
-					folder_level = 2,
-					delay = 300,
+					folder_level = 1,
+					color_mode = false,
+					delay = 0,
 				},
 			})
 		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
 	},
 }
