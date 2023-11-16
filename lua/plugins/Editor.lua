@@ -92,7 +92,7 @@ return {
 						end
 					end
 				end,
-				desc = "Previous trouble/quickfix item",
+				"Previous trouble/quickfix item",
 			},
 			{
 				"]q",
@@ -106,8 +106,23 @@ return {
 						end
 					end
 				end,
-				desc = "Next trouble/quickfix item",
+				"Next trouble/quickfix item",
 			},
+		},
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		lazy = false,
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+			current_line_blame = true,
 		},
 	},
 }
