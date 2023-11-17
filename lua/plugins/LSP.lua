@@ -78,7 +78,6 @@ return {
 				},
 				symbol_in_winbar = {
 					folder_level = 1,
-					color_mode = false,
 					delay = 0,
 				},
 			})
