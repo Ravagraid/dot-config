@@ -58,7 +58,6 @@ return {
 						},
 					}))
 				end,
-				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {})),
 				require("lspconfig").marksman.setup(vim.tbl_extend("force", lsp_config, {})),
 				require("lspconfig").yamlls.setup(vim.tbl_extend("force", lsp_config, {})),
 				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {})),
