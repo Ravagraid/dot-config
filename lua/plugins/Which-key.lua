@@ -1,8 +1,9 @@
 return {
 	{
 		"folke/which-key.nvim",
-			event = "VeryLazy",
-			plugins = { spelling = true },
+		event = "VeryLazy",
+		plugins = { spelling = true },
+		opts = {
 			defaults = {
 				mode = { "n", "v" },
 				["<leader>"] = {
