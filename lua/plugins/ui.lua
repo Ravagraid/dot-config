@@ -34,10 +34,11 @@ return {
 					lualine_a = { "mode" },
 					lualine_b = {
 						{ "filename", path = 1 },
+						{ "filesize" },
 						{ prose.word_count, cond = prose.is_available },
 						{ prose.reading_time, cond = prose.is_available },
 					},
-					lualine_c = { "diagnostics", "diff", "filesize" },
+					lualine_c = { "diagnostics", "diff" },
 					lualine_x = { "encoding", "fileformat" },
 					lualine_y = { "location", "progress" },
 					lualine_z = { "filetype" },

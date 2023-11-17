@@ -22,6 +22,7 @@ return {
 			})
 			require("mini.ai").setup()
 			require("mini.animate").setup()
+			require("mini.comment").setup()
 		end,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
