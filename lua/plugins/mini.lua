@@ -8,6 +8,7 @@ return {
 				symbol = "│",
 				options = { try_as_border = true },
 			})
+			require("mini.pairs").setup()
 		end,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {

@@ -1,12 +1,4 @@
 return {
-	--Pairs
-	{
-		"windwp/nvim-autopairs",
-		lazy = false,
-		opts = {
-			disable_filetype = { "TelescopePrompt", "vim" },
-		},
-	},
 	--Toggler
 	{ "rmagatti/alternate-toggler" },
 	--snippets
