@@ -3,7 +3,6 @@ return {
 	version = false,
 	build = ":TSUpdate",
 	event = "VeryLazy",
-	dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 	opts = {
 		highlight = { enable = true, additional_vim_regex_highlighting = true },
 		indent = { enable = true },
