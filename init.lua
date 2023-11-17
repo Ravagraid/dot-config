@@ -1,3 +1,3 @@
-require("Lazy")
-require("Maps")
-require("Settings")
+require("lazy")
+require("maps")
+require("settings")
