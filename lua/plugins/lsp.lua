@@ -29,7 +29,6 @@ return {
 				"marksman",
 				"vim-language-server",
 				"jsonls",
-				"yamlls",
 			},
 			auto_update = true,
 		},
@@ -59,7 +58,6 @@ return {
 					}))
 				end,
 				require("lspconfig").marksman.setup(vim.tbl_extend("force", lsp_config, {})),
-				require("lspconfig").yamlls.setup(vim.tbl_extend("force", lsp_config, {})),
 				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {})),
 			})
 		end,
