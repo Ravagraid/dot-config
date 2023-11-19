@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+opt.spelllang = "en_gb"
+opt.spell = true
+
 opt.number = true
 opt.relativenumber = true
 opt.linebreak = true

@@ -11,6 +11,7 @@ return {
 					e = { "<cmd>Neotree toggle<cr>", "Filetree" },
 					g = { "<cmd>lua _lazygit_toggle()<cr>", "Git" },
 					i = { "<cmd>ToggleAlternate<cr>", "Alternate" },
+					l = { "<cmd>Lazy<cr>", "Lazy" },
 					q = { "<cmd>q<cr>", "Quit" },
 					w = { "<cmd>w<cr>", "Save" },
 				},
@@ -75,6 +76,7 @@ return {
 					f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
 					g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Find text" },
 				},
+
 				function()
 					if require("trouble").is_open() then
 						require("trouble").next({ skip_groups = true, jump = true })

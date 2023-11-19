@@ -25,11 +25,6 @@ require("lazy").setup("plugins", {
 				Hint = " ",
 				Info = " ",
 			},
-			git = {
-				added = " ",
-				modified = " ",
-				removed = " ",
-			},
 		},
 	},
 	install = {
