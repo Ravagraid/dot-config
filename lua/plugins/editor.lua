@@ -128,4 +128,5 @@ return {
 			require("gitsigns").setup()
 		end,
 	},
+	{ "folke/twilight.nvim" },
 }
