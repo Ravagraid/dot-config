@@ -23,13 +23,16 @@ return {
 		lazy = false,
 		opts = {
 			ensure_installed = {
+				"fixjson",
+				"json-lsp",
 				"lua-language-server",
-				"stylua",
-				"mdformat",
 				"marksman",
-				"markdownlint",
+				"prettier",
+				"proselint",
+				"stylua",
 				"vim-language-server",
-				"jsonls",
+				"yaml-language-server",
+				"yamllint",
 			},
 			auto_update = true,
 		},
@@ -106,15 +109,25 @@ return {
 			})
 		end,
 	},
-	{ "folke/neodev.nvim", opts = {} },
+	{ "folke/neodev.nvim" },
 	{
 		"nvimtools/none-ls.nvim",
-		optional = true,
+		dependencies = { "mason.nvim" },
 		opts = function(_, opts)
 			local nls = require("null-ls")
 			opts.sources = vim.list_extend(opts.sources or {}, {
-				nls.builtins.diagnostics.markdownlint,
+				--markdown
+				nls.builtins.diagnostics.proselint,
+				nls.builtins.code_actions.proselint,
+				nls.builtins.formatting.prettier,
+
+				--lua
 				nls.builtins.formatting.stylua,
+
+				--json/yaml
+				nls.builtins.formatting.fixjson,
+				nls.builtins.diagnostics.jsonlint,
+				nls.builtins.diagnostics.yamllint,
 			})
 		end,
 	},

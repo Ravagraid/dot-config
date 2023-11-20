@@ -37,7 +37,6 @@ return {
 						{ "filesize" },
 						{ prose.word_count, cond = prose.is_available },
 						{ prose.reading_time, cond = prose.is_available },
-						{ require("yaml_nvim").get_yaml_key_and_value },
 					},
 					lualine_c = { "diagnostics", "diff" },
 					lualine_x = { "encoding", "fileformat" },
