@@ -112,22 +112,24 @@ return {
 	{ "folke/neodev.nvim" },
 	{
 		"nvimtools/none-ls.nvim",
-		dependencies = { "mason.nvim" },
+		dependencies = { "mason.nvim", "nvim-lua/plenary.nvim" },
 		opts = function(_, opts)
 			local nls = require("null-ls")
 			opts.sources = vim.list_extend(opts.sources or {}, {
-				--markdown
-				nls.builtins.diagnostics.proselint,
-				nls.builtins.code_actions.proselint,
-				nls.builtins.formatting.prettier,
 
-				--lua
-				nls.builtins.formatting.stylua,
-
-				--json/yaml
-				nls.builtins.formatting.fixjson,
+				nls.builtins.diagnostics.proselint.with({
+					method = nls.methods.DIAGNOSTICS_ON_SAVE,
+				}),
 				nls.builtins.diagnostics.jsonlint,
 				nls.builtins.diagnostics.yamllint,
+
+				--lua
+				nls.builtins.formatting.fixjson,
+				nls.builtins.formatting.stylua,
+				nls.builtins.formatting.prettier,
+
+				--json/yaml
+				nls.builtins.code_actions.proselint,
 			})
 		end,
 	},
