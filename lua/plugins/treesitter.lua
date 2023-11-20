@@ -8,18 +8,21 @@ return {
 			highlight = { enable = true, additional_vim_regex_highlighting = true },
 			indent = { enable = true },
 			ensure_installed = {
+				"bash",
 				"c",
 				"cpp",
 				"diff",
+				"json",
+				"json5",
+				"jsonc",
 				"lua",
 				"luadoc",
-				"vim",
-				"vimdoc",
-				"query",
-				"regex",
-				"bash",
 				"markdown",
 				"markdown_inline",
+				"query",
+				"regex",
+				"vimdoc",
+				"vim",
 			},
 			incremental_selection = {
 				enable = true,
@@ -35,17 +38,8 @@ return {
 			},
 		},
 		config = function(_, opts)
-			if type(opts.ensure_installed) == "table" then
-				---@type table<string, boolean>
-				local added = {}
-				opts.ensure_installed = vim.tbl_filter(function(lang)
-					if added[lang] then
-						return false
-					end
-					added[lang] = true
-					return true
-				end, opts.ensure_installed)
-			end
+			require("nvim-treesitter.install").compilers = { "zig" }
+			require("nvim-treesitter.install").prefer_git = false
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},

@@ -27,6 +27,7 @@ return {
 				"stylua",
 				"mdformat",
 				"marksman",
+				"markdownlint",
 				"vim-language-server",
 				"jsonls",
 			},
@@ -54,11 +55,35 @@ return {
 									globals = { "vim" },
 								},
 							},
+							completion = {
+								callSnippet = "Replace",
+							},
 						},
 					}))
 				end,
 				require("lspconfig").marksman.setup(vim.tbl_extend("force", lsp_config, {})),
-				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {})),
+				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {
+					settings = {
+						json = {
+							format = {
+								enable = true,
+							},
+							schemas = require("schemastore").json.schemas(),
+							validate = { enable = true },
+						},
+					},
+				})),
+				require("lspconfig").yamlls.setup(vim.tbl_extend("force", lsp_config, {
+					settings = {
+						yaml = {
+							schemaStore = {
+								enable = false,
+								url = "",
+							},
+							schemas = require("schemastore").yaml.schemas(),
+						},
+					},
+				})),
 			})
 		end,
 	},
@@ -78,6 +103,18 @@ return {
 					folder_level = 1,
 					delay = 0,
 				},
+			})
+		end,
+	},
+	{ "folke/neodev.nvim", opts = {} },
+	{
+		"nvimtools/none-ls.nvim",
+		optional = true,
+		opts = function(_, opts)
+			local nls = require("null-ls")
+			opts.sources = vim.list_extend(opts.sources or {}, {
+				nls.builtins.diagnostics.markdownlint,
+				nls.builtins.formatting.stylua,
 			})
 		end,
 	},
