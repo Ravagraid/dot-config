@@ -45,13 +45,13 @@ return {
 				capabilities = capabilities,
 				group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),
 			}
-
+			local lspconfig = require("lspconfig")
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
-					require("lspconfig")[server_name].setup(lsp_config)
+					lspconfig[server_name].setup(lsp_config)
 				end,
 				lua_ls = function()
-					require("lspconfig").lua_ls.setup(vim.tbl_extend("force", lsp_config, {
+					lspconfig.lua_ls.setup(vim.tbl_extend("force", lsp_config, {
 						settings = {
 							Lua = {
 								diagnostics = {
@@ -64,8 +64,8 @@ return {
 						},
 					}))
 				end,
-				require("lspconfig").marksman.setup(vim.tbl_extend("force", lsp_config, {})),
-				require("lspconfig").jsonls.setup(vim.tbl_extend("force", lsp_config, {
+				lspconfig.marksman.setup(vim.tbl_extend("force", lsp_config, {})),
+				lspconfig.jsonls.setup(vim.tbl_extend("force", lsp_config, {
 					settings = {
 						json = {
 							format = {
@@ -76,7 +76,7 @@ return {
 						},
 					},
 				})),
-				require("lspconfig").yamlls.setup(vim.tbl_extend("force", lsp_config, {
+				lspconfig.yamlls.setup(vim.tbl_extend("force", lsp_config, {
 					settings = {
 						yaml = {
 							schemaStore = {
@@ -103,13 +103,15 @@ return {
 					border_follow = false,
 				},
 				symbol_in_winbar = {
-					folder_level = 1,
+					show_file = false,
 					delay = 0,
+				},
+				code_action = {
+					show_server_name = true,
 				},
 			})
 		end,
 	},
-	{ "folke/neodev.nvim" },
 	{
 		"nvimtools/none-ls.nvim",
 		dependencies = { "mason.nvim", "nvim-lua/plenary.nvim" },
@@ -117,18 +119,14 @@ return {
 			local nls = require("null-ls")
 			opts.sources = vim.list_extend(opts.sources or {}, {
 
+				--diagnostics
 				nls.builtins.diagnostics.proselint.with({
 					method = nls.methods.DIAGNOSTICS_ON_SAVE,
 				}),
 				nls.builtins.diagnostics.jsonlint,
 				nls.builtins.diagnostics.yamllint,
 
-				--lua
-				nls.builtins.formatting.fixjson,
-				nls.builtins.formatting.stylua,
-				nls.builtins.formatting.prettier,
-
-				--json/yaml
+				--code actions
 				nls.builtins.code_actions.proselint,
 			})
 		end,
