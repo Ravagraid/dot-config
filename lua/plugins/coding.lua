@@ -52,6 +52,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
+					{ name = "mkdnflow" },
 					{ name = "path" },
 				}, {
 					{ name = "buffer" },
@@ -61,6 +62,7 @@ return {
 						mode = "symbol_text",
 						maxwidth = 50,
 						ellipsis_char = "...",
+						---@diagnostic disable-next-line: unused-local
 						before = function(entry, vim_item)
 							return vim_item
 						end,

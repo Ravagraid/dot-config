@@ -8,6 +8,15 @@ return {
 				symbol = "│",
 				options = { try_as_border = true },
 			})
+			require("mini.basics").setup({
+				options = {
+					win_borders = "single",
+				},
+				mappings = {
+					windows = true,
+					move_with_alt = true,
+				},
+			})
 			require("mini.pairs").setup()
 			require("mini.surround").setup({
 				mappings = {
