@@ -125,9 +125,6 @@ return {
 				}),
 				nls.builtins.diagnostics.jsonlint,
 				nls.builtins.diagnostics.yamllint,
-
-				--code actions
-				nls.builtins.code_actions.proselint,
 			})
 		end,
 	},

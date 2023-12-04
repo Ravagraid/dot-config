@@ -53,6 +53,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "mkdnflow" },
+					{ name = "neorg" },
 					{ name = "path" },
 				}, {
 					{ name = "buffer" },

@@ -30,7 +30,7 @@ return {
 					cmp = true,
 				},
 				perspective = {
-					priority = "root",
+					priority = "current",
 					root_tell = "index.md",
 				},
 				wrap = true,
