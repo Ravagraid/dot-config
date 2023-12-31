@@ -5,7 +5,12 @@ opt.spell = true
 
 opt.number = true
 opt.relativenumber = true
-opt.linebreak = true
+
+vim.opt.wrap = true
+vim.opt.linebreak = true -- break on words
+vim.opt.breakindent = true -- align wrapped line with previous indent level
+vim.opt.breakindentopt = "list:-1"
+vim.opt.formatlistpat = "^\\s*[-~>]\\+\\s\\((.)\\s\\)\\?"
 
 vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"

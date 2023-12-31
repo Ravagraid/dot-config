@@ -11,6 +11,8 @@ return {
 				markdown = { "prettier" },
 				json = { "fixjson" },
 				yaml = { "prettier" },
+				html = { "htmlbeautifier" },
+				scss = { "prettier" },
 			},
 			format_on_save = { timeout_ms = 500, lsp_fallback = true },
 		},

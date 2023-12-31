@@ -4,7 +4,7 @@ return {
 		config = function()
 			require("nvim-prose").setup({
 				wpm = 200.0,
-				filetypes = { "markdown", "asciidoc" },
+				filetypes = { "markdown", "asciidoc", "norg", "txt" },
 				placeholders = {
 					words = "words",
 					minutes = "min",
@@ -27,7 +27,7 @@ return {
 			require("mkdnflow").setup({
 				modules = {
 					yaml = true,
-					cmp = true,
+					cmp = false,
 				},
 				perspective = {
 					priority = "current",

@@ -87,6 +87,7 @@ return {
 						},
 					},
 				})),
+				lspconfig.html.setup(vim.tbl_extend("force", lsp_config, {})),
 			})
 		end,
 	},
@@ -125,6 +126,7 @@ return {
 				}),
 				nls.builtins.diagnostics.jsonlint,
 				nls.builtins.diagnostics.yamllint,
+				nls.builtins.diagnostics.markdownlint,
 			})
 		end,
 	},
