@@ -8,13 +8,14 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				markdown = { "prettier" },
-				json = { "fixjson" },
-				yaml = { "prettier" },
-				html = { "htmlbeautifier" },
-				scss = { "prettier" },
+				json = { "prettierd" },
+				yaml = { "prettierd" },
+				html = { "prettierd" },
+				scss = { "prettierd" },
+				css = { "prettierd" },
+				markdown = { "prettierd" },
 			},
-			format_on_save = { timeout_ms = 500, lsp_fallback = true },
+			format_on_save = { timeout_ms = 500, async = false, lsp_fallback = true },
 		},
 	},
 }

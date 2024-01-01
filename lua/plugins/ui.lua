@@ -58,7 +58,7 @@ return {
 				require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", hidden = true }):toggle()
 			end
 			return {
-				direction = "horizontal",
+				direction = "float",
 				open_mapping = [[<c-\>]],
 				float_opts = { border = "curved" },
 
@@ -120,6 +120,15 @@ return {
 				command_palette = true,
 				long_message_to_split = true,
 				inc_rename = true,
+				lsp_doc_border = false,
+			},
+			messages = {
+				enabled = false,
+				view = "notify",
+				view_error = "notify",
+				view_warn = "notify",
+				view_history = "messages",
+				view_search = "virtualtext",
 			},
 		},
 	},

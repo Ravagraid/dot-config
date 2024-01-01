@@ -4,7 +4,6 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
@@ -27,19 +26,6 @@ return {
 			-- markdown
 			lspconfig.marksman.setup({})
 
-			-- json
-			lspconfig.jsonls.setup({
-				settings = {
-					json = {
-						format = {
-							enable = true,
-						},
-						schemas = require("schemastore").json.schemas(),
-						validate = { enable = true },
-					},
-				},
-			})
-
 			--yaml
 			lspconfig.yamlls.setup({
 				settings = {
@@ -53,8 +39,21 @@ return {
 				},
 			})
 
-			--html
+			--webdev
 			lspconfig.html.setup({})
+			lspconfig.cssls.setup({})
+			lspconfig.jsonls.setup({
+				settings = {
+					json = {
+						format = {
+							enable = true,
+						},
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			})
+			lspconfig.theme_check.setup({})
 		end,
 	},
 	--Mason
@@ -76,7 +75,7 @@ return {
 				"json-lsp",
 				"lua-language-server",
 				"marksman",
-				"prettier",
+				"prettierd",
 				"proselint",
 				"stylua",
 				"vim-language-server",
