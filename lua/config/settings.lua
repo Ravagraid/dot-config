@@ -6,11 +6,11 @@ opt.spell = true
 opt.number = true
 opt.relativenumber = true
 
-vim.opt.wrap = true
-vim.opt.linebreak = true -- break on words
-vim.opt.breakindent = true -- align wrapped line with previous indent level
-vim.opt.breakindentopt = "list:-1"
-vim.opt.formatlistpat = "^\\s*[-~>]\\+\\s\\((.)\\s\\)\\?"
+opt.wrap = true
+opt.linebreak = true -- break on words
+opt.breakindent = true -- align wrapped line with previous indent level
+opt.breakindentopt = "list:-1"
+opt.formatlistpat = "^\\s*[-~>]\\+\\s\\((.)\\s\\)\\?"
 
 vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"

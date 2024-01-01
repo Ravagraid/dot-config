@@ -58,9 +58,11 @@ return {
 				require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", hidden = true }):toggle()
 			end
 			return {
-				direction = "float",
+				direction = "horizontal",
 				open_mapping = [[<c-\>]],
 				float_opts = { border = "curved" },
+
+				-- toggle for lazygit
 				vim.api.nvim_set_keymap(
 					"n",
 					"<leader>g",

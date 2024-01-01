@@ -7,6 +7,55 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
+		config = function()
+			local lspconfig = require("lspconfig")
+
+			-- lua
+			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			})
+
+			-- markdown
+			lspconfig.marksman.setup({})
+
+			-- json
+			lspconfig.jsonls.setup({
+				settings = {
+					json = {
+						format = {
+							enable = true,
+						},
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			})
+
+			--yaml
+			lspconfig.yamlls.setup({
+				settings = {
+					yaml = {
+						schemaStore = {
+							enable = false,
+							url = "",
+						},
+						schemas = require("schemastore").yaml.schemas(),
+					},
+				},
+			})
+
+			--html
+			lspconfig.html.setup({})
+		end,
 	},
 	--Mason
 	{
@@ -38,60 +87,6 @@ return {
 		},
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lsp_config = {
-				capabilities = capabilities,
-				group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),
-			}
-			local lspconfig = require("lspconfig")
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					lspconfig[server_name].setup(lsp_config)
-				end,
-				lua_ls = function()
-					lspconfig.lua_ls.setup(vim.tbl_extend("force", lsp_config, {
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					}))
-				end,
-				lspconfig.marksman.setup(vim.tbl_extend("force", lsp_config, {})),
-				lspconfig.jsonls.setup(vim.tbl_extend("force", lsp_config, {
-					settings = {
-						json = {
-							format = {
-								enable = true,
-							},
-							schemas = require("schemastore").json.schemas(),
-							validate = { enable = true },
-						},
-					},
-				})),
-				lspconfig.yamlls.setup(vim.tbl_extend("force", lsp_config, {
-					settings = {
-						yaml = {
-							schemaStore = {
-								enable = false,
-								url = "",
-							},
-							schemas = require("schemastore").yaml.schemas(),
-						},
-					},
-				})),
-				lspconfig.html.setup(vim.tbl_extend("force", lsp_config, {})),
-			})
-		end,
-	},
-	{
 		"nvimdev/lspsaga.nvim",
 		lazy = false,
 		dependencies = {
@@ -110,23 +105,6 @@ return {
 				code_action = {
 					show_server_name = true,
 				},
-			})
-		end,
-	},
-	{
-		"nvimtools/none-ls.nvim",
-		dependencies = { "mason.nvim", "nvim-lua/plenary.nvim" },
-		opts = function(_, opts)
-			local nls = require("null-ls")
-			opts.sources = vim.list_extend(opts.sources or {}, {
-
-				--diagnostics
-				nls.builtins.diagnostics.proselint.with({
-					method = nls.methods.DIAGNOSTICS_ON_SAVE,
-				}),
-				nls.builtins.diagnostics.jsonlint,
-				nls.builtins.diagnostics.yamllint,
-				nls.builtins.diagnostics.markdownlint,
 			})
 		end,
 	},
