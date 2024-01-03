@@ -75,7 +75,7 @@ return {
 				"json-lsp",
 				"lua-language-server",
 				"marksman",
-				"prettierd",
+				"prettier",
 				"proselint",
 				"stylua",
 				"vim-language-server",

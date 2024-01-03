@@ -9,9 +9,7 @@ return {
 				options = { try_as_border = true },
 			})
 			require("mini.basics").setup({
-				options = {
-					win_borders = "single",
-				},
+				options = { win_borders = "single" },
 				mappings = {
 					windows = true,
 					move_with_alt = true,
@@ -32,6 +30,8 @@ return {
 			require("mini.ai").setup()
 			require("mini.comment").setup()
 			require("mini.move").setup()
+			require("mini.splitjoin").setup()
+			require("mini.files").setup()
 		end,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
