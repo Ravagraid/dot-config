@@ -55,12 +55,19 @@ return {
 		opts = function()
 			---@diagnostic disable-next-line: lowercase-global
 			function _lazygit_toggle()
-				require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", hidden = true }):toggle()
+				require("toggleterm.terminal").Terminal
+					:new({ cmd = "lazygit", hidden = true, direction = "float" })
+					:toggle()
 			end
 			return {
-				direction = "float",
+				size = 15,
 				open_mapping = [[<c-\>]],
-				float_opts = { border = "curved" },
+				terminal_mappings = true,
+				direction = "horizontal",
+				shell = "pwsh.exe",
+				float_opts = {
+					border = "curved",
+				},
 
 				-- toggle for lazygit
 				vim.api.nvim_set_keymap(

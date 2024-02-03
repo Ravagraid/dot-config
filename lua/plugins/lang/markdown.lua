@@ -21,16 +21,17 @@ return {
 		end,
 		ft = { "markdown" },
 	},
+
 	{
 		"jakewvincent/mkdnflow.nvim",
 		config = function()
 			require("mkdnflow").setup({
 				modules = {
 					yaml = true,
-					cmp = false,
+					cmp = true,
 				},
 				perspective = {
-					priority = "current",
+					priority = "root",
 					root_tell = "index.md",
 				},
 				wrap = true,
