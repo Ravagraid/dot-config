@@ -15,7 +15,11 @@ return {
 					move_with_alt = true,
 				},
 			})
-			require("mini.pairs").setup()
+			require("mini.pairs").setup({
+				mappings = {
+					["*"] = { action = "closeopen", pair = "**", neigh_pattern = "[^\\].", register = { cr = false } },
+				},
+			})
 			require("mini.surround").setup({
 				mappings = {
 					add = "gsa", -- Add surrounding in Normal and Visual modes

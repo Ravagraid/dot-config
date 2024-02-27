@@ -168,7 +168,10 @@ return {
 		config = function()
 			require("neorg").setup({
 				load = {
+					["core.integrations.nvim-cmp"] = {},
+					["core.integrations.treesitter"] = {},
 					["core.defaults"] = {}, -- Loads default behaviour
+					["core.autocommands"] = {},
 					["core.concealer"] = {}, -- Adds pretty icons to your documents
 					["core.completion"] = {
 						config = {
@@ -178,13 +181,11 @@ return {
 					["core.dirman"] = { -- Manages Neorg workspaces
 						config = {
 							workspaces = {
-								tishanla = "~/tishanla",
-								notes = "~/notes",
+								general = "~/Documents/General Vault/",
 							},
 						},
 					},
 					["core.summary"] = {},
-					["core.integrations.treesitter"] = {},
 				},
 			})
 		end,
