@@ -162,9 +162,15 @@ return {
 	{ "folke/twilight.nvim" },
 	{ "mg979/vim-visual-multi" },
 	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000, -- We'd like this plugin to load first out of the rest
+		config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+	},
+	{
 		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "luarocks.nvim", "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
+		lazy = false,
+		-- version = "v7.0.0",
 		config = function()
 			require("neorg").setup({
 				load = {

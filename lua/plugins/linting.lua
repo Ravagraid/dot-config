@@ -3,9 +3,12 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		require("lint").linters_by_ft = {
+			c = { "cpplint" },
 			json = { "jsonlint" },
+			lua = { "selene" },
 			markdown = {
 				"proselint",
+				"vale",
 			},
 			yaml = { "yamllint" },
 		}

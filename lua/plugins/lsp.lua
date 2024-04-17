@@ -9,6 +9,9 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 
+			-- c, C++
+			lspconfig.clangd.setup({})
+
 			-- lua
 			lspconfig.lua_ls.setup({
 				settings = {

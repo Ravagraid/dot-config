@@ -112,7 +112,7 @@ return {
 
 		cmd = { "TodoTrouble", "TodoTelescope" },
 		event = "VeryLazy",
-		config = true,
+		opts = {},
 		keys = {
 			{
 				"]t",
