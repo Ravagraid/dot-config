@@ -6,10 +6,7 @@ return {
 			c = { "cpplint" },
 			json = { "jsonlint" },
 			lua = { "selene" },
-			markdown = {
-				"proselint",
-				"vale",
-			},
+			markdown = { "proselint" },
 			yaml = { "yamllint" },
 		}
 

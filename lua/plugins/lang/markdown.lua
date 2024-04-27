@@ -4,7 +4,7 @@ return {
 		config = function()
 			require("nvim-prose").setup({
 				wpm = 200.0,
-				filetypes = { "markdown", "asciidoc", "norg", "txt" },
+				filetypes = { "markdown", "asciidoc", "txt" },
 				placeholders = {
 					words = "words",
 					minutes = "min",
@@ -15,11 +15,10 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		build = "cd app && install",
-		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
 		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 
 	{
