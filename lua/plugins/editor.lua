@@ -1,44 +1,104 @@
 return {
 	--File Explorer
+	-- {
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	lazy = false,
+	-- 	branch = "v3.x",
+	-- 	dependencies = {
+	-- 		{ "nvim-lua/plenary.nvim", lazy = true },
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- 	opts = {
+	-- 		popup_border_style = "rounded",
+	-- 		filesystem = {
+	-- 			filtered_items = {
+	-- 				hide_dotfiles = true,
+	-- 				hide_gitignored = true,
+	-- 				hide_hidden = false,
+	-- 			},
+	-- 			hijack_netrw_behavior = "open_current",
+	-- 		},
+	-- 		git_status = {
+	-- 			symbols = {
+	-- 				-- Status type
+	-- 				untracked = "",
+	-- 				ignored = "",
+	-- 				unstaged = "󰄱",
+	-- 				staged = "",
+	-- 				conflict = "",
+	-- 			},
+	-- 		},
+	-- 		event_handlers = {
+	-- 			{
+	-- 				event = "file_opened",
+	-- 				---@diagnostic disable-next-line: unused-local
+	-- 				handler = function(file_path)
+	-- 					require("neo-tree.command").execute({ action = "close" })
+	-- 				end,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		lazy = false,
-		branch = "v3.x",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim", lazy = true },
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-		opts = {
-			popup_border_style = "rounded",
-			filesystem = {
-				filtered_items = {
-					hide_dotfiles = true,
-					hide_gitignored = true,
-					hide_hidden = false,
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
+
+			local api = require("nvim-tree.api")
+			vim.keymap.set("n", "<c-e>", api.tree.toggle)
+
+			local function my_on_attach(bufnr)
+				local function opts(desc)
+					return {
+						desc = "nvim-tree: " .. desc,
+						buffer = bufnr,
+						noremap = true,
+						silent = true,
+						nowait = true,
+					}
+				end
+
+				-- default mappings
+				api.config.mappings.default_on_attach(bufnr)
+
+				-- custom mappings
+				vim.keymap.set("n", "<c-e>", api.tree.toggle, opts("Toggle"))
+				vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+			end
+
+			require("nvim-tree").setup({
+				view = {
+					width = 35,
 				},
-				hijack_netrw_behavior = "open_current",
-			},
-			git_status = {
-				symbols = {
-					-- Status type
-					untracked = "",
-					ignored = "",
-					unstaged = "󰄱",
-					staged = "",
-					conflict = "",
+				on_attach = my_on_attach,
+				filters = {
+					custom = { "^.git$" },
 				},
-			},
-			event_handlers = {
-				{
-					event = "file_opened",
-					---@diagnostic disable-next-line: unused-local
-					handler = function(file_path)
-						require("neo-tree.command").execute({ action = "close" })
-					end,
+				actions = {
+					open_file = { quit_on_open = true },
 				},
-			},
-		},
+				update_focused_file = {
+					enable = true,
+					update_cwd = true,
+				},
+				git = {
+					enable = false,
+				},
+				diagnostics = {
+					enable = true,
+					show_on_dirs = true,
+					icons = {
+						hint = "",
+						info = "",
+						warning = "",
+						error = "",
+					},
+				},
+			})
+		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
