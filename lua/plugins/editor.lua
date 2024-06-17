@@ -185,34 +185,4 @@ return {
 		priority = 1000, -- We'd like this plugin to load first out of the rest
 		config = true, -- This automatically runs `require("luarocks-nvim").setup()`
 	},
-	{
-		"nvim-neorg/neorg",
-		dependencies = { "luarocks.nvim", "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
-		lazy = false,
-		-- version = "v7.0.0",
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.integrations.nvim-cmp"] = {},
-					["core.integrations.treesitter"] = {},
-					["core.defaults"] = {}, -- Loads default behaviour
-					["core.autocommands"] = {},
-					["core.concealer"] = {}, -- Adds pretty icons to your documents
-					["core.completion"] = {
-						config = {
-							engine = "nvim-cmp",
-						},
-					},
-					["core.dirman"] = { -- Manages Neorg workspaces
-						config = {
-							workspaces = {
-								general = "~/Documents/General Vault/",
-							},
-						},
-					},
-					["core.summary"] = {},
-				},
-			})
-		end,
-	},
 }

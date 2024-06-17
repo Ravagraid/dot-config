@@ -1,6 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		priority = 100,
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -17,7 +18,6 @@ return {
 			})
 			require("mason-lspconfig").setup({})
 			require("mason-tool-installer").setup({
-
 				ensure_installed = {
 					"fixjson",
 					"json-lsp",
@@ -54,7 +54,6 @@ return {
 					},
 				},
 			})
-
 			-- markdown
 			lspconfig.marksman.setup({})
 

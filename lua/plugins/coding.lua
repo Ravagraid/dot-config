@@ -33,10 +33,25 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
 		},
-		opts = function()
+		config = function()
 			local cmp = require("cmp")
+			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
-			return {
+
+			cmp.setup({
+				completion = {
+					completeopt = "menu,menuone,preview,noselect",
+				},
+				formatting = {
+					format = lspkind.cmp_format({
+						mode = "symbol_text",
+						maxwidth = 50,
+						ellipsis_char = "...",
+						before = function(entry, vim_item)
+							return vim_item
+						end,
+					}),
+				},
 				snippet = {
 					expand = function(args)
 						require("luasnip").lsp_expand(args.body)
@@ -54,22 +69,10 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-					{ name = "neorg" },
 					{ name = "path" },
 				}, {
 					{ name = "buffer" },
 				}),
-				formatting = {
-					format = lspkind.cmp_format({
-						mode = "symbol_text",
-						maxwidth = 50,
-						ellipsis_char = "...",
-						---@diagnostic disable-next-line: unused-local
-						before = function(entry, vim_item)
-							return vim_item
-						end,
-					}),
-				},
 
 				cmp.setup.filetype("gitcommit", {
 					sources = cmp.config.sources({
@@ -94,13 +97,11 @@ return {
 						{ name = "cmdline" },
 					}),
 				}),
-			}
-		end,
-		config = function(_, opts)
-			for _, source in ipairs(opts.sources) do
-				source.group_index = source.group_index or 1
-			end
-			require("cmp").setup(opts)
+			})
+			-- snippets
+			require("luasnip.loaders.from_vscode").load({
+				paths = { "~/AppData/Local/nvim/snippets" },
+			})
 		end,
 	},
 	{
