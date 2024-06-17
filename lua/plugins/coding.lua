@@ -1,22 +1,6 @@
 return {
 	--Toggler
 	{ "rmagatti/alternate-toggler" },
-	--snippets
-	{
-		"L3MON4D3/LuaSnip",
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-			end,
-		},
-		event = "VeryLazy",
-		opts = {
-			history = true,
-			updateevents = "TextChanged,TextChangedI",
-			enable_autosnippets = true,
-		},
-	},
 
 	{ "gbprod/yanky.nvim", opts = {} },
 

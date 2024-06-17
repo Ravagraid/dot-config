@@ -74,7 +74,7 @@ return {
 							["<esc>"] = actions.close,
 						},
 					},
-					file_ignore_patterns = { "node_modules", "yarn.lock", ".git", "lazy-lock.json" },
+					file_ignore_patterns = { "node_modules", "yarn.lock", ".git", "lazy-lock.json", "%.lock" },
 					dynamic_preview_title = true,
 					path_display = { "smart" },
 				},
@@ -184,9 +184,4 @@ return {
 	},
 	{ "folke/twilight.nvim" },
 	{ "mg979/vim-visual-multi" },
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000, -- We'd like this plugin to load first out of the rest
-		config = true, -- This automatically runs `require("luarocks-nvim").setup()`
-	},
 }

@@ -1,6 +1,7 @@
 return {
 	{
 		"skwee357/nvim-prose",
+		lazy = true,
 		config = function()
 			require("nvim-prose").setup({
 				wpm = 200.0,
@@ -14,6 +15,7 @@ return {
 	},
 	{
 		"iamcco/markdown-preview.nvim",
+		lazy = true,
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
 		build = function()
@@ -23,6 +25,7 @@ return {
 
 	{
 		"jakewvincent/mkdnflow.nvim",
+		lazy = true,
 		config = function()
 			require("mkdnflow").setup({
 				modules = {

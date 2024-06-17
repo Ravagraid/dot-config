@@ -2,38 +2,13 @@ return {
 	--Statusline
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.g.lualine_laststatus = vim.o.laststatus
-			if vim.fn.argc(-1) > 0 then
-				-- set an empty statusline till lualine loads
-				vim.o.statusline = " "
-			else
-				-- hide the statusline on the starter page
-				vim.o.laststatus = 0
-			end
-		end,
-		opts = function()
+		config = function()
 			local prose = require("nvim-prose")
-			vim.o.laststatus = vim.g.lualine_laststatus
-			return {
-				options = {
-					icons_enabled = true,
-					theme = "everforest",
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
-					always_divide_middle = true,
-					globalstatus = false,
-					refresh = {
-						statusline = 1000,
-						tabline = 1000,
-						winbar = 1000,
-					},
-				},
+			require("lualine").setup({
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = {
-						{ "filename", path = 1 },
+						{ "filename", path = 3 },
 						{ "filesize" },
 						{ prose.word_count, cond = prose.is_available },
 						{ prose.reading_time, cond = prose.is_available },
@@ -43,9 +18,7 @@ return {
 					lualine_y = { "location", "progress" },
 					lualine_z = { "filetype" },
 				},
-				lualine_c = { "filename" },
-				lualine_x = { "location" },
-			}
+			})
 		end,
 	},
 
@@ -80,7 +53,6 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "VeryLazy",
 		opts = {
 			indent = {
 				char = "│",
