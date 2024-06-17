@@ -52,31 +52,30 @@ return {
 	--Terminal
 	{
 		"akinsho/toggleterm.nvim",
-		opts = function()
-			---@diagnostic disable-next-line: lowercase-global
+		config = function()
+			require("toggleterm").setup({
+				open_mapping = [[<c-\>]],
+				direction = "float",
+				shell = "pwsh.exe",
+				float_opts = {
+					border = "curved",
+					width = 130,
+					height = 30,
+				},
+			})
+
+			-- lazygit toggle
+			vim.api.nvim_set_keymap(
+				"n",
+				"<leader>g",
+				"<cmd>lua _lazygit_toggle()<CR>",
+				{ noremap = true, silent = true }
+			)
 			function _lazygit_toggle()
 				require("toggleterm.terminal").Terminal
 					:new({ cmd = "lazygit", hidden = true, direction = "float" })
 					:toggle()
 			end
-			return {
-				size = 15,
-				open_mapping = [[<c-\>]],
-				terminal_mappings = true,
-				direction = "horizontal",
-				shell = "pwsh.exe",
-				float_opts = {
-					border = "curved",
-				},
-
-				-- toggle for lazygit
-				vim.api.nvim_set_keymap(
-					"n",
-					"<leader>g",
-					"<cmd>lua _lazygit_toggle()<CR>",
-					{ noremap = true, silent = true }
-				),
-			}
 		end,
 	},
 	{

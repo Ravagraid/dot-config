@@ -64,18 +64,22 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		opts = function()
+		config = function()
+			local builtin = require("telescope.builtin")
 			local actions = require("telescope.actions")
-			return {
+			require("telescope").setup({
 				defaults = {
-					file_ignore_patterns = { "node_modules", "yarn.lock" },
-					dynamic_preview_title = true,
-					path_display = { "smart" },
 					mappings = {
 						i = {
 							["<esc>"] = actions.close,
 						},
 					},
+					file_ignore_patterns = { "node_modules", "yarn.lock", ".git", "lazy-lock.json" },
+					dynamic_preview_title = true,
+					path_display = { "smart" },
+				},
+				pickers = {
+					find_files = { hidden = true },
 				},
 				layout_config = {
 					horizontal = {
@@ -83,7 +87,7 @@ return {
 						preview_width = 0.6,
 					},
 				},
-			}
+			})
 		end,
 	},
 	{
