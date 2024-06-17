@@ -1,11 +1,6 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-		},
 		config = function()
 			local lspconfig = require("lspconfig")
 
@@ -62,31 +57,36 @@ return {
 	--Mason
 	{
 		"williamboman/mason.nvim",
-		cmd = "Mason",
-		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-		build = ":MasonUpdate",
-		opts = {
-			PATH = "prepend",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
-	},
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		lazy = false,
-		opts = {
-			ensure_installed = {
-				"fixjson",
-				"json-lsp",
-				"lua-language-server",
-				"marksman",
-				"prettier",
-				"proselint",
-				"stylua",
-				"vim-language-server",
-				"yaml-language-server",
-				"yamllint",
-			},
-			auto_update = true,
-		},
+		config = function()
+			require("mason").setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			})
+			require("mason-lspconfig").setup({})
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"fixjson",
+					"json-lsp",
+					"lua-language-server",
+					"marksman",
+					"prettier",
+					"proselint",
+					"stylua",
+					"vim-language-server",
+					"yaml-language-server",
+					"yamllint",
+				},
+			})
+		end,
 	},
 	{
 		"nvimdev/lspsaga.nvim",

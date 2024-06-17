@@ -8,7 +8,6 @@ return {
 				mode = { "n", "v" },
 				["<leader>"] = {
 					a = { "ggVG", "Select All" },
-					e = { "<cmd>Neotree toggle<cr>", "Filetree" },
 					g = { "<cmd>lua _lazygit_toggle()<cr>", "Git" },
 					i = { "<cmd>ToggleAlternate<cr>", "Alternate" },
 					l = { "<cmd>Lazy<cr>", "Lazy" },
