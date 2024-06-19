@@ -76,7 +76,6 @@ return {
 		},
 		main = "ibl",
 	},
-	{ "MunifTanjim/nui.nvim", lazy = true },
 	{
 		"folke/noice.nvim",
 		dependencies = {

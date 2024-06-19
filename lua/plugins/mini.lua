@@ -35,7 +35,6 @@ return {
 			require("mini.comment").setup()
 			require("mini.move").setup()
 			require("mini.splitjoin").setup()
-			require("mini.files").setup()
 		end,
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {

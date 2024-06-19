@@ -182,6 +182,5 @@ return {
 			{ "[[", desc = "Prev Reference" },
 		},
 	},
-	{ "folke/twilight.nvim" },
 	{ "mg979/vim-visual-multi" },
 }
