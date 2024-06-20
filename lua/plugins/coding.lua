@@ -4,6 +4,7 @@ return {
 
 	{ "gbprod/yanky.nvim", opts = {} },
 
+	{ "rafamadriz/friendly-snippets" },
 	--cmp
 	{
 		"hrsh7th/nvim-cmp",
@@ -83,9 +84,7 @@ return {
 				}),
 			})
 			-- snippets
-			require("luasnip.loaders.from_vscode").load({
-				paths = { "~/AppData/Local/nvim/snippets" },
-			})
+			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
 	{
