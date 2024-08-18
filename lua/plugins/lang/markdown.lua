@@ -17,7 +17,7 @@ return {
 		"iamcco/markdown-preview.nvim",
 		lazy = true,
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
+		ft = { "markdown", "md" },
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
@@ -25,7 +25,6 @@ return {
 
 	{
 		"jakewvincent/mkdnflow.nvim",
-		lazy = true,
 		config = function()
 			require("mkdnflow").setup({
 				modules = {

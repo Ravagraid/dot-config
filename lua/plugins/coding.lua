@@ -95,7 +95,6 @@ return {
 		},
 
 		cmd = { "TodoTrouble", "TodoTelescope" },
-		event = "VeryLazy",
 		opts = {},
 		keys = {
 			{

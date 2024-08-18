@@ -85,6 +85,9 @@ return {
 				},
 			})
 			lspconfig.theme_check.setup({})
+
+			-- shell
+			require("lspconfig").nushell.setup({})
 		end,
 	},
 	{
