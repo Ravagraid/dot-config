@@ -183,4 +183,6 @@ return {
 		},
 	},
 	{ "mg979/vim-visual-multi" },
+
+	{ "LhKipp/nvim-nu" },
 }
