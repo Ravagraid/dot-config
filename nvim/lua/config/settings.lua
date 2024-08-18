@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 opt.spelllang = "en_gb"
-opt.spell = true
+opt.spell = false
 
 opt.number = true
 opt.relativenumber = true
