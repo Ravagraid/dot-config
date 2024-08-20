@@ -4,7 +4,6 @@ return {
 
 	{ "gbprod/yanky.nvim", opts = {} },
 
-	{ "rafamadriz/friendly-snippets" },
 	--cmp
 	{
 		"hrsh7th/nvim-cmp",
@@ -13,6 +12,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp",
@@ -20,8 +20,8 @@ return {
 		},
 		config = function()
 			local cmp = require("cmp")
-			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
+			local luasnip = require("luasnip")
 
 			cmp.setup({
 				completion = {
@@ -32,14 +32,14 @@ return {
 						mode = "symbol_text",
 						maxwidth = 50,
 						ellipsis_char = "...",
-						before = function(entry, vim_item)
-							return vim_item
-						end,
+						-- before = function(entry, vim_item)
+						-- return vim_item
+						-- end,
 					}),
 				},
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						luasnip.lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -84,7 +84,10 @@ return {
 				}),
 			})
 			-- snippets
-			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load({
+				-- paths = { "~/.config/nvim/snippets" },
+			})
+			require("luasnip").setup({ enable_autosnippets = true })
 		end,
 	},
 	{

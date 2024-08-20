@@ -10,11 +10,7 @@ opt.wrap = true
 opt.linebreak = true -- break on words
 opt.breakindent = true -- align wrapped line with previous indent level
 opt.breakindentopt = "list:-1"
-opt.formatlistpat = "^\\s*[-~>]\\+\\s\\((.)\\s\\)\\?"
-
-vim.scriptencoding = "utf-8"
-opt.encoding = "utf-8"
-opt.fileencoding = "utf-8"
+-- opt.formatlistpat = "^\\s*[-~>]\\+\\s\\((.)\\s\\)\\?"
 
 opt.scrolloff = 5
 opt.sidescrolloff = 5

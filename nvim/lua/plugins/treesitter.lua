@@ -40,6 +40,7 @@ return {
 					max_file_lines = nil,
 				},
 			})
+			require("nvim-treesitter.install").prefer_git = false
 		end,
 	},
 }
