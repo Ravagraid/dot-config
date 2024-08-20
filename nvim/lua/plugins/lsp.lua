@@ -88,8 +88,6 @@ return {
 
 			-- shell
 			lspconfig.nushell.setup({})
-
-			--Tex
 			lspconfig.texlab.setup({})
 		end,
 	},
