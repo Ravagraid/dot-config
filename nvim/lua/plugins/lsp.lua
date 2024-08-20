@@ -87,7 +87,10 @@ return {
 			lspconfig.theme_check.setup({})
 
 			-- shell
-			require("lspconfig").nushell.setup({})
+			lspconfig.nushell.setup({})
+
+			--Tex
+			lspconfig.texlab.setup({})
 		end,
 	},
 	{

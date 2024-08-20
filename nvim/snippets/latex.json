@@ -1,0 +1,13 @@
+{
+  "NecroStatBlock": {
+    "prefix": "NecStatBlk",
+    "body": [
+      "\\begin{tabular}{c c c c c c c c | c c c c}",
+      "M & WS & BS & S & T & W & I & A & Ld & Cl & Wil & Int \\\\\\",
+      "\\hline",
+      "a & b & c & d & e & f & g & h & i & j & k & l",
+      "\\\\\\",
+      "\\end{tabular}"
+    ]
+  }
+}

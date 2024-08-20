@@ -1,8 +1,5 @@
 local opt = vim.opt
 
-opt.spelllang = "en_gb"
-opt.spell = false
-
 opt.number = true
 opt.relativenumber = true
 

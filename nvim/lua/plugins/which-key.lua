@@ -2,7 +2,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		plugins = { spelling = true },
+		plugins = { spelling = false },
 		opts = {
 			defaults = {
 				mode = { "n", "v" },
