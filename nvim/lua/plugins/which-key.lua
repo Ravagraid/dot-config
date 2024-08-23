@@ -1,20 +1,12 @@
 return {
 	{
+		-- TODO: Refactor using LazyKeys
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		plugins = { spelling = false },
 		opts = {
 			defaults = {
 				mode = { "n", "v" },
-				["<leader>"] = {
-					a = { "ggVG", "Select All" },
-					g = { "<cmd>lua _lazygit_toggle()<cr>", "Git" },
-					i = { "<cmd>ToggleAlternate<cr>", "Alternate" },
-					l = { "<cmd>Lazy<cr>", "Lazy" },
-					q = { "<cmd>q<cr>", "Quit" },
-					w = { "<cmd>w<cr>", "Save" },
-				},
-
 				["g"] = {
 					name = "+goto",
 					d = { "<cmd>Lspsaga goto_definition<cr>", "Goto Defintion" },
@@ -87,8 +79,6 @@ return {
 					end
 				end,
 				"Next trouble/quickfix item",
-
-				["<leader>gh"] = { name = "+hunks" },
 
 				["<leader>s"] = { name = "+search" },
 

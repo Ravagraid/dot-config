@@ -84,8 +84,6 @@ return {
 					},
 				},
 			})
-			lspconfig.theme_check.setup({})
-
 			-- shell
 			lspconfig.nushell.setup({})
 			lspconfig.texlab.setup({})
@@ -118,7 +116,6 @@ return {
 				callback = function(ev)
 					-- Enable completion triggered by <c-x><c-o>
 					vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
 					local opts = { buffer = ev.buf }
 					vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
 					vim.keymap.set("n", "<space>r", vim.lsp.buf.rename, opts)

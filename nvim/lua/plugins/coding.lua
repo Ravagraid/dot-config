@@ -1,6 +1,9 @@
 return {
 	--Toggler
-	{ "rmagatti/alternate-toggler" },
+	{
+		"rmagatti/alternate-toggler",
+		keys = { { "<leader>i", "<cmd>ToggleAlternative<cr>", desc = "Toggle Alternative variable" } },
+	},
 
 	{ "gbprod/yanky.nvim", opts = {} },
 

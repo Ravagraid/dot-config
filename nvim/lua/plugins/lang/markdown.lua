@@ -23,27 +23,37 @@ return {
 			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 		end,
 	},
+	-- {
+	-- 	"jakewvincent/mkdnflow.nvim",
+	-- 	config = function()
+	-- 		require("mkdnflow").setup({
+	-- 			modules = {
+	-- 				yaml = true,
+	-- 				cmp = true,
+	-- 			},
+	-- 			perspective = {
+	-- 				priority = "root",
+	-- 				root_tell = "index.md",
+	-- 			},
+	-- 			wrap = true,
+	-- 			tables = {
+	-- 				auto_extend_rows = true,
+	-- 				auto_extend_cols = true,
+	-- 			},
+	-- 			mappings = {
+	-- 				MkdnEnter = { { "i", "n", "v" }, "<CR>" },
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 	{
-		"jakewvincent/mkdnflow.nvim",
-		config = function()
-			require("mkdnflow").setup({
-				modules = {
-					yaml = true,
-					cmp = true,
-				},
-				perspective = {
-					priority = "root",
-					root_tell = "index.md",
-				},
-				wrap = true,
-				tables = {
-					auto_extend_rows = true,
-					auto_extend_cols = true,
-				},
-				mappings = {
-					MkdnEnter = { { "i", "n", "v" }, "<CR>" },
-				},
-			})
-		end,
+		-- TODO: Implement this plugin.
+		"epwalsh/obsidian.nvim",
+		version = "*",
+		ft = "markdown",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 }
