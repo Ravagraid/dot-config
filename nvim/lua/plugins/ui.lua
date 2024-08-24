@@ -29,20 +29,14 @@ return {
 			require("toggleterm").setup({
 				open_mapping = [[<c-\>]],
 				direction = "float",
+				shell = "nu",
 				float_opts = {
 					border = "curved",
-					width = 130,
-					height = 30,
 				},
 			})
 
 			-- lazygit toggle
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>g",
-				"<cmd>lua _lazygit_toggle()<CR>",
-				{ noremap = true, silent = true }
-			)
+			vim.api.nvim_set_keymap("n", "<c-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 			function _lazygit_toggle()
 				require("toggleterm.terminal").Terminal
 					:new({ cmd = "lazygit", hidden = true, direction = "float" })
