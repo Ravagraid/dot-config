@@ -101,4 +101,13 @@ return {
 			},
 		},
 	},
+	{
+		"mrjones2014/legendary.nvim",
+		dependencies = {
+			"stevearc/dressing.nvim",
+		},
+		priority = 10000,
+		lazy = false,
+		init = function() require("legendary").setup({ extensions = { lazy_nvim = true } }) end,
+	},
 }

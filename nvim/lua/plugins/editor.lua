@@ -61,11 +61,15 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
+		keys = {
+			{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "find files" },
+			{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Find text" },
+		},
 		config = function()
-			-- local builtin = require("telescope.builtin")
 			local actions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
@@ -95,9 +99,13 @@ return {
 		cmd = { "TroubleToggle", "Trouble" },
 		opts = { use_diagnostic_signs = true },
 		keys = {
+			--diagnostics
 			{ "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+			{ "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
 			{ "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
 			{ "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+
+			--next/prev
 			{
 				"[q",
 				function()
@@ -105,12 +113,10 @@ return {
 						require("trouble").previous({ skip_groups = true, jump = true })
 					else
 						local ok, err = pcall(vim.cmd.cprev)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
+						if not ok then vim.notify(err, vim.log.levels.ERROR) end
 					end
 				end,
-				"Previous trouble/quickfix item",
+				desc = "Previous trouble/quickfix item",
 			},
 			{
 				"]q",
@@ -119,12 +125,10 @@ return {
 						require("trouble").next({ skip_groups = true, jump = true })
 					else
 						local ok, err = pcall(vim.cmd.cnext)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
+						if not ok then vim.notify(err, vim.log.levels.ERROR) end
 					end
 				end,
-				"Next trouble/quickfix item",
+				desc = "Next trouble/quickfix item",
 			},
 		},
 	},
@@ -142,9 +146,7 @@ return {
 			},
 			current_line_blame = true,
 		},
-		init = function()
-			require("gitsigns").setup()
-		end,
+		init = function() require("gitsigns").setup() end,
 	},
 	{
 		"RRethy/vim-illuminate",
@@ -160,13 +162,13 @@ return {
 			require("illuminate").configure(opts)
 
 			local function map(key, dir, buffer)
-				vim.keymap.set("n", key, function()
-					require("illuminate")["goto_" .. dir .. "_reference"](false)
-				end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
+				vim.keymap.set(
+					"n",
+					key,
+					function() require("illuminate")["goto_" .. dir .. "_reference"](false) end,
+					{ desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer }
+				)
 			end
-
-			map("]]", "next")
-			map("[[", "prev")
 
 			-- also set it after loading ftplugins, since a lot overwrite [[ and ]]
 			vim.api.nvim_create_autocmd("FileType", {
@@ -189,7 +191,7 @@ return {
 		"kevinhwang91/nvim-ufo",
 		dependencies = "kevinhwang91/promise-async",
 		config = function()
-			vim.o.foldcolumn = "1"
+			vim.o.foldcolumn = "0"
 			vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 			vim.o.foldlevelstart = 99
 			vim.o.foldenable = true
