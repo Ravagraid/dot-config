@@ -67,7 +67,7 @@ return {
 		},
 		keys = {
 			{ "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "find files" },
-			{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Find text" },
+			{ "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "find text" },
 		},
 		config = function()
 			local actions = require("telescope.actions")

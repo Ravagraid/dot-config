@@ -1,6 +1,5 @@
 return {
 	{
-		-- TODO: Refactor using LazyKeys
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		config = function()
@@ -9,20 +8,20 @@ return {
 				plugins = { spelling = true },
 				replace = { ["<leader>"] = "SPC" },
 			})
-			wk.register({
+			wk.add({
 				mode = { "n", "v" },
-				["g"] = { group = "+goto" },
-				["]"] = { group = "+next" },
-				["["] = { group = "+prev" },
-				["<leader>b"] = { group = "+buffer" },
-				["<leader>c"] = { group = "+code" },
-				["<leader>f"] = { group = "+file" },
-				["<leader>g"] = { group = "+git" },
-				["<leader>s"] = { group = "+search" },
-				["<leader>u"] = { group = "+ui" },
-				["<leader>w"] = { group = "+windows" },
-				["leader>x"] = { group = "+diagnostics/quickfix" },
-				["<leader><tab>"] = { group = "+tabs" },
+				{ "g", group = "+goto" },
+				{ "]", group = "+next" },
+				{ "[", group = "+prev" },
+				{ "<leader>b", group = "+buffer" },
+				{ "<leader>c", group = "+code" },
+				{ "<leader>f", group = "+file" },
+				{ "<leader>g", group = "+git" },
+				{ "<leader>s", group = "+search" },
+				{ "<leader>u", group = "+ui" },
+				{ "<leader>w", group = "+windows" },
+				{ "<leader>x", group = "+diagnostics/quickfix" },
+				{ "<leader><tab>", group = "+tabs" },
 			})
 		end,
 	},
