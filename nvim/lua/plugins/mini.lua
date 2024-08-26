@@ -12,7 +12,7 @@ return {
 				options = { win_borders = "single" },
 				mappings = {
 					windows = true,
-					move_with_alt = true,
+					-- move_with_alt = true,
 				},
 			})
 			require("mini.pairs").setup({
@@ -33,7 +33,7 @@ return {
 			-- })
 			require("mini.ai").setup()
 			require("mini.comment").setup()
-			require("mini.move").setup()
+			-- require("mini.move").setup()
 			require("mini.splitjoin").setup()
 		end,
 		init = function()
