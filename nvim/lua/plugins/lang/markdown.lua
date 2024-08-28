@@ -23,6 +23,11 @@ return {
 			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 		end,
 	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 	-- {
 	-- 	"jakewvincent/mkdnflow.nvim",
 	-- 	config = function()

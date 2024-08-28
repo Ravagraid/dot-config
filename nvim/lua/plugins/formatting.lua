@@ -19,7 +19,7 @@ return {
 					yaml = { "prettier" },
 
 					--note taking
-					markdown = { "prettier" },
+					markdown = { "prettier", "markdownlint-cli2", "markdown-toc" },
 
 					-- LaTeX
 					tex = { "latexindent" },
