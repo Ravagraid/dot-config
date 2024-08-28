@@ -1,63 +1,45 @@
 return {
 	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			vim.g.loaded_netrw = 1
-			vim.g.loaded_netrwPlugin = 1
-
-			local api = require("nvim-tree.api")
-			vim.keymap.set("n", "<c-e>", api.tree.toggle)
-
-			local function my_on_attach(bufnr)
-				local function opts(desc)
-					return {
-						desc = "nvim-tree: " .. desc,
-						buffer = bufnr,
-						noremap = true,
-						silent = true,
-						nowait = true,
-					}
-				end
-
-				-- default mappings
-				api.config.mappings.default_on_attach(bufnr)
-
-				-- custom mappings
-				vim.keymap.set("n", "<c-e>", api.tree.toggle, opts("Toggle"))
-				vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
-			end
-
-			require("nvim-tree").setup({
-				view = {
-					width = 35,
-				},
-				on_attach = my_on_attach,
-				filters = {
-					custom = { "^.git$" },
-				},
-				actions = {
-					open_file = { quit_on_open = true },
-				},
-				update_focused_file = {
-					enable = true,
-					update_cwd = true,
-				},
-				git = {
-					enable = false,
-				},
-				diagnostics = {
-					enable = true,
-					show_on_dirs = true,
-					icons = {
-						hint = "",
-						info = "",
-						warning = "",
-						error = "",
+		"nvim-neo-tree/neo-tree.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		cmd = "Neotree",
+		keys = {
+			{
+				"<leader>fe",
+				function() require("neo-tree.command").execute({ toggle = true }) end,
+				desc = "Explorer NeoTree (Root Dir)",
+			},
+			{
+				"<leader>fE",
+				function() require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() }) end,
+				desc = "Explorer NeoTree (cwd)",
+			},
+		},
+		opts = {
+			sources = { "filesystem", "buffers" },
+			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
+			filesystem = {
+				bind_to_cwd = false,
+				follow_current_file = { enabled = true },
+				use_libuv_file_watcher = true,
+			},
+			window = {
+				mappings = {
+					["l"] = "open",
+					["h"] = "close_node",
+					["<space>"] = "none",
+					["O"] = {
+						function(state) require("lazy.util").open(state.tree:get_node().path, { system = true }) end,
+						desc = "Open with System Application",
 					},
+					["P"] = { "toggle_preview", config = { use_float = false } },
 				},
-			})
-		end,
+			},
+		},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
