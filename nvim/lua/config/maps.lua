@@ -16,14 +16,6 @@ key.set("n", "<S-Down>", "<cmd>resize -2<cr>")
 key.set("n", "<S-Left>", "<cmd>vertical resize -2<cr>")
 key.set("n", "<S-Right>", "<cmd>vertical resize +2<cr>")
 
--- move lines
-key.set("n", "<A-j>", ":m .+1<cr>==")
-key.set("v", "<A-j>", ":m '>+1<cr>gv=gv")
-key.set("i", "<A-j>", "<esc>:m .+1<cr>==gi")
-key.set("n", "<A-k>", ":m .-2<cr>==")
-key.set("n", "<A-k>", ":m '<-2<cr>gv=gv")
-key.set("n", "<A-k>", ":m .-2<cr>==gi")
-
 -- improved indenting
 key.set("v", "<", "<gv")
 key.set("v", ">", ">gv")

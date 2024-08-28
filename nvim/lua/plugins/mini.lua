@@ -12,10 +12,15 @@ return {
 				options = { win_borders = "single" },
 				mappings = {
 					windows = true,
-					-- move_with_alt = true,
+					move_with_alt = true,
 				},
 			})
 			require("mini.pairs").setup({
+				modes = { insert = true, command = false, terminal = false },
+				skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+				skip_ts = { "string" },
+				skip_unbalanced = true,
+				markdown = true,
 				mappings = {
 					["*"] = { action = "closeopen", pair = "**", neigh_pattern = "[^\\].", register = { cr = false } },
 				},
@@ -33,7 +38,7 @@ return {
 			-- })
 			require("mini.ai").setup()
 			require("mini.comment").setup()
-			-- require("mini.move").setup()
+			require("mini.move").setup()
 			require("mini.splitjoin").setup()
 		end,
 		init = function()
