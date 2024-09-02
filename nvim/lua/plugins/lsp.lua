@@ -120,20 +120,6 @@ return {
 				},
 			})
 
-			-- local builtin = require("telescope.builtin")
-
-			-- vim.api.nvim_create_autocmd("LspAttach", {
-			-- 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-			-- 	callback = function(ev)
-			-- 		-- Enable completion triggered by <c-x><c-o>
-			-- 		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-			-- 		local opts = { buffer = ev.buf }
-			-- 		vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
-			-- 		vim.keymap.set("n", "<space>r", vim.lsp.buf.rename, opts)
-			-- 		vim.keymap.set("n", "gr", builtin.lsp_references, opts)
-			-- 	end,
-			-- })
-
 			vim.keymap.set("n", "<space>k", "<cmd>Lspsaga hover_doc<cr>", { silent = true })
 
 			-- error lens

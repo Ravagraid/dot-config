@@ -106,6 +106,9 @@ return {
 		dependencies = {
 			"stevearc/dressing.nvim",
 		},
+		keys = {
+			{ "<c-l>", "<cmd>Legendary<cr>", desc = "Legendary" },
+		},
 		priority = 10000,
 		lazy = false,
 		init = function() require("legendary").setup({ extensions = { lazy_nvim = true } }) end,

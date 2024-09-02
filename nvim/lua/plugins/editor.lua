@@ -19,6 +19,21 @@ return {
 				desc = "Explorer NeoTree (cwd)",
 			},
 		},
+		init = function()
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = vim.api.nvim_create_augroup("Neotree_start_directory", { clear = true }),
+				desc = "Start Neo-tree with directory",
+				once = true,
+				callback = function()
+					if package.loaded["neo-tree"] then
+						return
+					else
+						local stats = vim.uv.fs_stat(vim.fn.argv(0))
+						if stats and stats.type == "directory" then require("neo-tree") end
+					end
+				end,
+			})
+		end,
 		opts = {
 			sources = { "filesystem", "buffers" },
 			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
@@ -28,6 +43,7 @@ return {
 				use_libuv_file_watcher = true,
 			},
 			window = {
+				width = 30,
 				mappings = {
 					["l"] = "open",
 					["h"] = "close_node",
@@ -55,18 +71,12 @@ return {
 			local actions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
-					mappings = {
-						i = {
-							["<esc>"] = actions.close,
-						},
-					},
+					mappings = { i = { ["<esc>"] = actions.close } },
 					file_ignore_patterns = { "node_modules", "yarn.lock", ".git", "lazy-lock.json", "%.lock" },
 					dynamic_preview_title = true,
 					path_display = { "smart" },
 				},
-				pickers = {
-					find_files = { hidden = true },
-				},
+				pickers = { find_files = { hidden = true } },
 				layout_config = {
 					horizontal = {
 						preview_cutoff = 100,
@@ -82,10 +92,14 @@ return {
 		opts = { use_diagnostic_signs = true },
 		keys = {
 			--diagnostics
-			{ "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-			{ "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-			{ "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-			{ "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Document Diagnostics (Trouble)" },
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Workspace Diagnostics (Trouble)",
+			},
+			{ "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+			{ "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
 
 			--next/prev
 			{
@@ -134,11 +148,9 @@ return {
 		"RRethy/vim-illuminate",
 		event = "VeryLazy",
 		opts = {
-			delay = 200,
+			delay = 100,
 			large_file_cutoff = 2000,
-			large_file_overrides = {
-				providers = { "lsp" },
-			},
+			large_file_overrides = { providers = { "lsp" } },
 		},
 		config = function(_, opts)
 			require("illuminate").configure(opts)
@@ -151,6 +163,9 @@ return {
 					{ desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer }
 				)
 			end
+
+			map("]]", "next")
+			map("[[", "prev")
 
 			-- also set it after loading ftplugins, since a lot overwrite [[ and ]]
 			vim.api.nvim_create_autocmd("FileType", {
@@ -169,53 +184,4 @@ return {
 	{ "mg979/vim-visual-multi" },
 
 	{ "LhKipp/nvim-nu" },
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-		config = function()
-			vim.o.foldcolumn = "0"
-			vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-			vim.o.foldlevelstart = 99
-			vim.o.foldenable = true
-			vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-
-			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-			vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
-			vim.keymap.set("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-			vim.keymap.set("n", "zk", require("ufo").peekFoldedLinesUnderCursor)
-
-			local handler = function(virtText, lnum, endLnum, width, truncate)
-				local newVirtText = {}
-				local suffix = (" 󰁂 %d "):format(endLnum - lnum)
-				local sufWidth = vim.fn.strdisplaywidth(suffix)
-				local targetWidth = width - sufWidth
-				local curWidth = 0
-				for _, chunk in ipairs(virtText) do
-					local chunkText = chunk[1]
-					local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-					if targetWidth > curWidth + chunkWidth then
-						table.insert(newVirtText, chunk)
-					else
-						chunkText = truncate(chunkText, targetWidth - curWidth)
-						local hlGroup = chunk[2]
-						table.insert(newVirtText, { chunkText, hlGroup })
-						chunkWidth = vim.fn.strdisplaywidth(chunkText)
-						-- str width returned from truncate() may less than 2nd argument, need padding
-						if curWidth + chunkWidth < targetWidth then
-							suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-						end
-						break
-					end
-					curWidth = curWidth + chunkWidth
-				end
-				table.insert(newVirtText, { suffix, "MoreMsg" })
-				return newVirtText
-			end
-
-			require("ufo").setup({
-				fold_virt_text_handler = handler,
-			})
-		end,
-	},
 }
