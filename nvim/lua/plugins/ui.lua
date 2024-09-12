@@ -1,4 +1,22 @@
 return {
+	-- bufferline
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		event = "VeryLazy",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		keys = {
+			{ "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
+			{ "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
+			{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+			{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+			{ "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+			{ "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+			{ "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+			{ "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+		},
+		config = function() require("bufferline").setup() end,
+	},
 	--Statusline
 	{
 		"nvim-lualine/lualine.nvim",
@@ -112,5 +130,22 @@ return {
 		priority = 10000,
 		lazy = false,
 		init = function() require("legendary").setup({ extensions = { lazy_nvim = true } }) end,
+	},
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			{ "tpope/vim-dadbod", lazy = true },
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
 	},
 }
