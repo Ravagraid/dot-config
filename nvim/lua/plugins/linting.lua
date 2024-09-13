@@ -4,6 +4,7 @@ return {
 	config = function()
 		require("lint").linters_by_ft = {
 			c = { "cpplint" },
+			cmake = { "cmakelint" },
 			json = { "jsonlint" },
 			lua = { "selene" },
 			markdown = { "proselint", "markdownlint-cli2" },

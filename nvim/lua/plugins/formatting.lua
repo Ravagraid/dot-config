@@ -9,6 +9,7 @@ return {
 				formatters_by_ft = {
 					-- programming
 					c = { "clang-format" },
+					cmake = { "cmakelang" },
 					lua = { "stylua" },
 
 					-- webdev

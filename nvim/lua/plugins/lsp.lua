@@ -1,13 +1,14 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		priority = 100,
+		priority = 1000,
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
 			require("mason").setup({
+				PATH = "prepend",
 				ui = {
 					icons = {
 						package_installed = "✓",
@@ -38,8 +39,9 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 
-			-- c, C++
+			-- c, c++, cmake
 			lspconfig.clangd.setup({})
+			lspconfig.cmake.setup({})
 
 			-- lua
 			lspconfig.lua_ls.setup({

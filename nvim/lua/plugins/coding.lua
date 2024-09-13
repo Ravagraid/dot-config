@@ -41,9 +41,7 @@ return {
 					}),
 				},
 				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
+					expand = function(args) luasnip.lsp_expand(args.body) end,
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -106,16 +104,12 @@ return {
 		keys = {
 			{
 				"]t",
-				function()
-					require("todo-comments").jump_next()
-				end,
+				function() require("todo-comments").jump_next() end,
 				desc = "Next todo comment",
 			},
 			{
 				"[t",
-				function()
-					require("todo-comments").jump_prev()
-				end,
+				function() require("todo-comments").jump_prev() end,
 				desc = "Previous todo comment",
 			},
 			{ "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
