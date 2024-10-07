@@ -181,7 +181,20 @@ return {
 			{ "[[", desc = "Prev Reference" },
 		},
 	},
+
 	{ "mg979/vim-visual-multi" },
 
 	{ "LhKipp/nvim-nu" },
+
+	{
+		"stevearc/oil.nvim",
+		opts = {
+			columns = {
+				"icon",
+				"size",
+				"mtime",
+			},
+		},
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	},
 }
