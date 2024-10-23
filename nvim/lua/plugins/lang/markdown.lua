@@ -37,6 +37,20 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
+			"hrsh7th/nvim-cmp",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		opts = {
+			workspaces = {
+				{
+					name = "personal",
+					path = "~/repos/notes/",
+				},
+				{
+					name = "TishanLa",
+					path = "~/repos/TishanLaNotes/",
+				},
+			},
 		},
 	},
 }
