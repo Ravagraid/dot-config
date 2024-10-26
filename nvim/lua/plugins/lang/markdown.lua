@@ -51,6 +51,9 @@ return {
 					path = "~/repos/TishanLaNotes/",
 				},
 			},
+			templates = {
+				folder = "Templates",
+			},
 		},
 	},
 }
