@@ -13,11 +13,11 @@ return {
 					lua = { "stylua" },
 
 					-- webdev
-					html = { "prettier" },
-					scss = { "prettier" },
-					css = { "prettier" },
-					json = { "prettier" },
-					yaml = { "prettier" },
+					html = { "prettierd" },
+					scss = { "prettierd" },
+					css = { "prettierd" },
+					json = { "prettierd" },
+					yaml = { "prettierd" },
 
 					--note taking
 					markdown = { "prettier", "markdownlint-cli2", "markdown-toc" },
