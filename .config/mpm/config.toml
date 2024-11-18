@@ -1,0 +1,2 @@
+[mpm]
+exclude = ["pip", "pipx", "uv"]
