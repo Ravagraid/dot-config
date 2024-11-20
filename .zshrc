@@ -131,5 +131,6 @@ alias mkdir='mkdir -p'
 alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias sz='source ~/.zshrc'
+alias dotconf='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
