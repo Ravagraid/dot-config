@@ -51,7 +51,7 @@ total_updates=$((official_updates + aur_updates))
 
 [ "${1}" == upgrade ] && printf "Official:   %-10s\nAUR ($aur_helper):  %-10s\n\n" "$official_updates" "$aur_updates" && exit
 
-tooltip="Official:   $official_updates\nAUR ($aur_helper):  $aur_updates
+tooltip="Official:   $official_updates\nAUR ($aur_helper):  $aur_updates"
 
 # Module and tooltip
 if [ $total_updates -eq 0 ]; then
