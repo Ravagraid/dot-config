@@ -4,7 +4,7 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="arrow"
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_MAGIC_FUNCTIONS="true"
@@ -115,6 +115,7 @@ alias inur='locate'
 alias nomz='ps aux | less'
 alias nomnom='killall'
 alias cya='reboot'
+alias uwu='shutdown now'
 alias kthxbai='halt'
 
 # Directory navigation shortcuts
