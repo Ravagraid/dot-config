@@ -6,3 +6,5 @@ scoop/config.json
 scoop
 scoop/config.json
 nvim/lazy-lock.json
+.config/nushell/history.txt
+.config/nushell/history.txt
