@@ -863,4 +863,4 @@ $env.config = {
     ]
 }
 
-oh-my-posh init nu --config 'clean-detailed'
+oh-my-posh init nu --config 'nordtron'

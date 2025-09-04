@@ -46,11 +46,11 @@ return {
 			workspaces = {
 				{
 					name = "personal",
-					path = "~/Notes",
+					path = "~/github/Notes",
 				},
 				{
 					name = "TishanLa",
-					path = "~/TishanLaNotes",
+					path = "~/github/TishanLaNotes",
 				},
 			},
 			templates = {
