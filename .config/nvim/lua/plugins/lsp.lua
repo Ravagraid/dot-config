@@ -23,9 +23,8 @@ return {
 					"fixjson",
 					"json-lsp",
 					"lua-language-server",
-					"marksman",
+					"markdown-oxide",
 					"prettier",
-					"proselint",
 					"stylua",
 					"vim-language-server",
 					"yaml-language-server",
@@ -36,15 +35,14 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = { "saghen/blink.cmp" },
 		config = function()
-			local lspconfig = require("lspconfig")
-
 			-- c, c++, cmake
-			lspconfig.clangd.setup({})
-			lspconfig.cmake.setup({})
+			vim.lsp.config("clangd", {})
+			vim.lsp.config("cmake", {})
 
 			-- lua
-			lspconfig.lua_ls.setup({
+			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -56,11 +54,12 @@ return {
 					},
 				},
 			})
+
 			-- markdown
-			lspconfig.marksman.setup({})
+			vim.lsp.config("marksman", {})
 
 			--yaml
-			lspconfig.yamlls.setup({
+			vim.lsp.config("yamlls", {
 				settings = {
 					yaml = {
 						schemaStore = {
@@ -73,9 +72,9 @@ return {
 			})
 
 			--webdev
-			lspconfig.html.setup({})
-			lspconfig.cssls.setup({})
-			lspconfig.jsonls.setup({
+			vim.lsp.config("html", {})
+			vim.lsp.config("cssls", {})
+			vim.lsp.config("jsonls", {
 				settings = {
 					json = {
 						format = {
@@ -86,9 +85,10 @@ return {
 					},
 				},
 			})
+
 			-- shell
-			lspconfig.nushell.setup({})
-			lspconfig.texlab.setup({})
+			vim.lsp.config("nushell", {})
+			vim.lsp.config("texlab", {})
 		end,
 	},
 	{

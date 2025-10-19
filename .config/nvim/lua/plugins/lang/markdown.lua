@@ -27,22 +27,24 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown" },
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		opts = {},
+		opts = {
+			render_modes = true,
+		},
 	},
 	{
-		-- TODO: this.
-		"epwalsh/obsidian.nvim",
+		"obsidian-nvim/obsidian.nvim",
 		version = "*",
 		lazy = true,
 		ft = "markdown",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
-			"hrsh7th/nvim-cmp",
 			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = {
+			legacy_commands = false,
 			workspaces = {
 				{
 					name = "personal",
@@ -55,6 +57,25 @@ return {
 			},
 			templates = {
 				folder = "Templates",
+			},
+
+			completion = {
+				nvim_cmp = false,
+				min_chars = 2,
+			},
+
+			preferred_link_style = "wiki",
+
+			picker = {
+				name = "telescope.nvim",
+				note_mappings = {
+					new = "<C-x>",
+					insert_link = "<C-l>",
+				},
+				tag_mappings = {
+					tag_note = "<C-x>",
+					insert_tag = "<C-l>",
+				},
 			},
 		},
 	},
